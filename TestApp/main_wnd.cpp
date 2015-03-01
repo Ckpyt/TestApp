@@ -109,7 +109,7 @@ namespace test_app
 	bool main_wnd::del_classman_from_teacher()
 	{													
 		int i = SendDlgItemMessage(m_my_hwnd, IDC_MAIN_TEACHERS, LB_GETSELCOUNT, 0, 0);						//если выделено больше одного препода, выходим
-		if (i>1) return -1;
+		if (i>1) return false;
 		wchar_t tek[MAX_BUFFER_SIZE];
 		SendDlgItemMessage(m_my_hwnd, IDC_MAIN_TEACHERS, LB_GETSELITEMS, 1, (LPARAM)&i);					//поиск выделеного препода
 		SendDlgItemMessage(m_my_hwnd, IDC_MAIN_TEACHERS, LB_GETTEXT, i, (LPARAM)tek);
@@ -142,7 +142,7 @@ namespace test_app
 		}
 		
 		i = SendDlgItemMessage(m_my_hwnd, IDC_MAIN_TEACHERS, LB_GETSELCOUNT, i, 0);
-		if (i != 1) return -1; //если выделено больше одного препода, не выводим список студентов
+		if (i != 1) return false; //если выделено больше одного препода, не выводим список студентов
 		
 		wchar_t tek[MAX_BUFFER_SIZE];
 		SendDlgItemMessage(m_my_hwnd, IDC_MAIN_TEACHERS, LB_GETSELITEMS, 1, (LPARAM)&i);					//забираем выделенного препода
